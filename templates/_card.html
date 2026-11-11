@@ -1,0 +1,8 @@
+<a class="card" href="/class/{{ c.id }}">
+  <div class="meta">{{ c.category }} · {{ c.region }}{% if c.is_new %} <span class="new">NEW</span>{% endif %}</div>
+  <h3>{{ c.name }}</h3>
+  <div class="price">
+    {% if c.old_price_text %}<s>{{ c.old_price_text }}</s>{% endif %}<strong{% if c.sale_price is none %} class="inquiry"{% endif %}>{{ c.price_text }}</strong>
+  </div>
+  <div class="rating{% if c.rating is none %} none{% endif %}">{{ c.rating_text }}</div>
+</a>

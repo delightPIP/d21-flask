@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>클래스로 마켓에 오신것을 환영해요</h1>
+<p>지금 <strong>{{ total }}개</strong>의 클래스가 기다리고 있어요.</p>
+<div class="chips">
+  <a class="chip" href="/classes">전체</a>
+  {% for cat in categories %}
+  <a class="chip" href="/classes?category={{ cat | urlencode }}">{{ cat }}</a>
+  {% endfor %}
+</div>
+{% endblock %}

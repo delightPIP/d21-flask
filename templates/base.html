@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}클래스로 마켓{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">클래스로 마켓</a>
+    <nav>
+      <a href="/">홈</a>
+      <a href="/classes">클래스</a>
+      <a href="/wishlist">찜 목록 ({{ wish_count }})</a>
+      <a href="/about">소개</a>
+    </nav>
+  </header>
+  <main>
+    {% for message in get_flashed_messages() %}{# 맡겨 둔 안내가 있으면 꺼내서 보여 줘요 (꺼내면 사라져요) #}
+    <p class="flash" role="status">✅ {{ message }}</p>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>© 클래스로 마켓 · 배우고 싶은 걸 만나는 곳</footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}찜 목록 · 클래스로 마켓{% endblock %}
+{% block content %}
+<h1>찜 목록 <small class="count">{{ classes | length }}개</small></h1>
+{% if classes %}{# 찜한 클래스가 있으면 카드로 보여 줘요 #}
+<div class="grid">
+  {% for c in classes %}
+  <div class="wish-item">
+    {% include "_card.html" %}
+    <form method="post" action="/class/{{ c.id }}/wish">
+      <input type="hidden" name="back" value="wishlist">{# 누른 뒤 이 화면으로 돌아오라는 표시 #}
+      <button type="submit" class="wish-btn on">♥ 찜 취소</button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+{% else %}{# 하나도 없으면 안내 문구와 다음에 할 일을 보여 줘요 #}
+<p class="empty">아직 찜한 클래스가 없어요<br><a href="/classes">클래스 구경하러 가기</a></p>
+{% endif %}
+<p class="meta">찜은 로그인 없이 이 브라우저에만 기억돼요.</p>
+{% endblock %}
